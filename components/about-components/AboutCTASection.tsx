@@ -48,9 +48,14 @@ export default function AboutCTASection() {
           >
             <motion.a
               href="/contact"
-              whileHover={{ scale: 1.05, y: -2 }}
+              whileHover={{ 
+                scale: 1.08, 
+                y: -4,
+                boxShadow: "0 20px 40px rgba(249, 115, 22, 0.4)"
+              }}
               whileTap={{ scale: 0.95 }}
-              className="inline-block bg-orange-500 text-black font-bold uppercase px-12 py-4 rounded-lg shadow-2xl hover:bg-white transition-all duration-300 cursor-pointer font-inter text-lg border-2 border-orange-500 hover:border-white"
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              className="inline-block bg-orange-500 text-black font-bold uppercase px-12 py-4 rounded-lg shadow-2xl hover:bg-white transition-colors duration-300 cursor-pointer font-inter text-lg border-2 border-orange-500 hover:border-white"
             >
               START YOUR PROJECT
             </motion.a>

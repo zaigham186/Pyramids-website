@@ -286,11 +286,16 @@ const FloorPlansSection = () => {
 
               {/* Download Brochure Button */}
               <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ 
+                  scale: 1.03,
+                  y: -2,
+                  boxShadow: "0 15px 30px rgba(249, 115, 22, 0.3)"
+                }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
                 onClick={handleDownloadBrochure}
                 disabled={isDownloading}
-                className="w-full bg-orange-500 text-black font-bold uppercase py-3 rounded-lg mt-6 font-inter text-sm border-2 border-orange-500 hover:bg-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full bg-orange-500 text-black font-bold uppercase py-3 rounded-lg mt-6 font-inter text-sm border-2 border-orange-500 hover:bg-white transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {isDownloading ? (
                   <>

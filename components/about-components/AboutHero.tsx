@@ -1,9 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import { Variants } from "framer-motion";
+import { useRef } from "react";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -33,15 +34,24 @@ const AboutHero = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
+  
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
 
   return (
     <section
-      ref={ref}
+      ref={containerRef}
       className="relative w-full bg-black text-white h-screen flex items-center overflow-hidden"
       // CHANGED: Replaced min-h-[] with h-screen to fill the sticky wrapper
     >
       {/* LAYER 1: BACKGROUND IMAGE */}
-      <div className="absolute inset-0 z-0">
+      <motion.div style={{ y }} className="absolute inset-0 z-0">
         <Image
           src="/expertise-images/saifMall.png"
           alt="Pyramids Architectural Project - Saif Mall & Residency"
@@ -56,11 +66,15 @@ const AboutHero = () => {
 
         {/* Subtle vignette for extra depth */}
         <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/20 via-transparent to-black/10" />
-      </div>
+      </motion.div>
 
       {/* LAYER 2: FOREGROUND CONTENT */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-36 w-full">
+      <motion.div 
+        style={{ opacity }}
+        className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-36 w-full"
+      >
         <motion.div
+          ref={ref}
           className="max-w-2xl"
           variants={containerVariants}
           initial="hidden"
@@ -99,7 +113,7 @@ const AboutHero = () => {
             execution.
           </motion.p>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };

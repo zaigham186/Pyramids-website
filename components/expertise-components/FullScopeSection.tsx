@@ -80,17 +80,20 @@ export default function FullScopeSection() {
             viewport={{ once: true }}
           >
             {serviceCategories.map((category) => (
-              <button
+              <motion.button
                 key={category.id}
                 onClick={() => setActiveTab(category.id)}
-                className={`px-6 py-3 rounded-xl font-oswald text-base font-medium uppercase transition-all duration-300 ${
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                className={`px-6 py-3 rounded-xl font-oswald text-base font-medium uppercase transition-colors duration-300 ${
                   activeTab === category.id
                     ? "bg-orange-500 text-black shadow-lg shadow-orange-500/25"
                     : "bg-gray-900 text-gray-400 border border-gray-800 hover:border-orange-400/40 hover:text-orange-400"
                 }`}
               >
                 {category.title}
-              </button>
+              </motion.button>
             ))}
           </motion.div>
 

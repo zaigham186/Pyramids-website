@@ -1,15 +1,27 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function ProjectsHero() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
+
   return (
-    <section className="relative h-screen bg-black flex items-center justify-center overflow-hidden">
-      {/* Background Image with enhanced brightness */}
-      <div
+    <section ref={ref} className="relative h-screen bg-black flex items-center justify-center overflow-hidden">
+      {/* Background Image with enhanced brightness and parallax */}
+      <motion.div
+        style={{ y }}
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url("/expertise-images/AfiTower.PNG")',
+          y,
         }}
       />
 
@@ -20,7 +32,10 @@ export default function ProjectsHero() {
       <div className="absolute inset-0 brightness-110 contrast-105" />
 
       {/* Content */}
-      <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-6">
+      <motion.div 
+        style={{ opacity }}
+        className="relative z-10 text-center text-white max-w-4xl mx-auto px-6"
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -57,7 +72,7 @@ export default function ProjectsHero() {
             is the proof of our commitment to excellence.
           </motion.p>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">

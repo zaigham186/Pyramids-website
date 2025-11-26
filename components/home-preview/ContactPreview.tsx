@@ -165,9 +165,13 @@ export default function ContactPreview() {
                       transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                       className="flex items-start gap-4 group"
                     >
-                      <div className="w-10 h-10 bg-orange-500 rounded-none flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                      <motion.div 
+                        whileHover={{ scale: 1.15, rotate: 5 }}
+                        transition={{ type: "spring", stiffness: 400 }}
+                        className="w-10 h-10 bg-orange-500 rounded-none flex items-center justify-center flex-shrink-0"
+                      >
                         <Icon size={18} className="text-white" />
-                      </div>
+                      </motion.div>
                       <div>
                         <p className="text-black font-semibold font-heading uppercase text-sm tracking-wide">
                           {contact.title}
@@ -195,7 +199,7 @@ export default function ContactPreview() {
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name Fields - Side by Side */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
+                <motion.div whileFocus={{ scale: 1.02 }}>
                   <input
                     type="text"
                     name="firstName"
@@ -203,10 +207,10 @@ export default function ContactPreview() {
                     value={formData.firstName}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-orange-500 text-black placeholder-gray-500 font-sans transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-black placeholder-gray-500 font-sans transition-all duration-300"
                   />
-                </div>
-                <div>
+                </motion.div>
+                <motion.div whileFocus={{ scale: 1.02 }}>
                   <input
                     type="text"
                     name="lastName"
@@ -214,13 +218,13 @@ export default function ContactPreview() {
                     value={formData.lastName}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-orange-500 text-black placeholder-gray-500 font-sans transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-black placeholder-gray-500 font-sans transition-all duration-300"
                   />
-                </div>
+                </motion.div>
               </div>
 
               {/* Email */}
-              <div>
+              <motion.div whileFocus={{ scale: 1.02 }}>
                 <input
                   type="email"
                   name="email"
@@ -228,9 +232,9 @@ export default function ContactPreview() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-orange-500 text-black placeholder-gray-500 font-sans transition-all duration-300"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-black placeholder-gray-500 font-sans transition-all duration-300"
                 />
-              </div>
+              </motion.div>
 
               {/* Phone & Subject - Side by Side */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -274,9 +278,14 @@ export default function ContactPreview() {
               <motion.button
                 type="submit"
                 disabled={isLoading}
-                whileHover={{ scale: isLoading ? 1 : 1.02 }}
-                whileTap={{ scale: isLoading ? 1 : 0.98 }}
-                className="w-full px-8 py-4 bg-black text-white font-bold text-lg rounded-none uppercase tracking-wider hover:bg-orange-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-3 font-heading"
+                whileHover={{ 
+                  scale: isLoading ? 1 : 1.03,
+                  y: isLoading ? 0 : -3,
+                  boxShadow: isLoading ? "none" : "0 20px 40px rgba(0, 0, 0, 0.3)"
+                }}
+                whileTap={{ scale: isLoading ? 1 : 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                className="w-full px-8 py-4 bg-black text-white font-bold text-lg rounded-none uppercase tracking-wider hover:bg-orange-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-300 flex items-center justify-center gap-3 font-heading"
               >
                 {isLoading ? "Sending..." : "Send Message"}
                 {!isLoading && <ArrowRight size={18} />}

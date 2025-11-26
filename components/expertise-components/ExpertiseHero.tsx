@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import { Variants } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -36,14 +36,23 @@ const ExpertiseHero = () => {
   });
 
   const [imageError, setImageError] = useState(false);
+  
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
 
   return (
     <section
-      ref={ref}
+      ref={containerRef}
       className="relative w-full bg-black text-white h-screen flex items-center overflow-hidden"
     >
       {/* LAYER 1: BACKGROUND IMAGE WITH FALLBACK */}
-      <div className="absolute inset-0 z-0">
+      <motion.div style={{ y }} className="absolute inset-0 z-0">
         {/* Try to load the schematic image */}
         {!imageError ? (
           <Image
@@ -99,12 +108,16 @@ const ExpertiseHero = () => {
 
         {/* Subtle vignette for extra depth */}
         <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/20 via-transparent to-black/10" />
-      </div>
+      </motion.div>
 
       {/* LAYER 2: FOREGROUND CONTENT - POSITIONED 1-1.5 INCHES LOWER */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <motion.div 
+        style={{ opacity }}
+        className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full"
+      >
         {/* ADJUSTED POSITION: Added mt-16 (4rem) to move content down ~1.5 inches */}
         <motion.div
+          ref={ref}
           className="max-w-2xl mt-16 lg:mt-24"
           variants={containerVariants}
           initial="hidden"
@@ -145,7 +158,7 @@ const ExpertiseHero = () => {
             relentless focus on your success.
           </motion.p>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* SCROLL INDICATOR - FOR STICKY HERO PATTERN */}
       <motion.div

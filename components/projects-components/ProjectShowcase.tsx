@@ -1,12 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { projects } from "@/data/projectData";
 
 export default function ProjectShowcase() {
   const [currentProject, setCurrentProject] = useState(0);
+  const { ref: sectionRef, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   const nextProject = () => {
     setCurrentProject((prev) => (prev + 1) % projects.length);
@@ -28,39 +33,69 @@ export default function ProjectShowcase() {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <motion.div 
+          ref={sectionRef}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <div className="flex items-center justify-center mb-4">
-            <div className="w-4 h-4 bg-orange-500 mr-3" />
-            <span className="font-inter text-orange-500 font-medium text-sm tracking-widest uppercase">
+            <motion.div 
+              initial={{ width: 0 }}
+              animate={inView ? { width: 16 } : {}}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="h-4 bg-orange-500 mr-3" 
+            />
+            <motion.span 
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="font-inter text-orange-500 font-medium text-sm tracking-widest uppercase"
+            >
               FEATURED PROJECTS
-            </span>
+            </motion.span>
           </div>
-          <h2 className="font-oswald text-4xl md:text-5xl font-bold uppercase text-gray-900 mb-4">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="font-oswald text-4xl md:text-5xl font-bold uppercase text-gray-900 mb-4"
+          >
             OUR PORTFOLIO
-          </h2>
-          <p className="font-inter text-lg text-gray-600 max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="font-inter text-lg text-gray-600 max-w-2xl mx-auto"
+          >
             Explore our landmark projects that define architectural excellence
             and engineering innovation
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Project Showcase */}
         <div className="relative bg-gray-50 rounded-3xl overflow-hidden">
           {/* Navigation Arrows */}
-          <button
+          <motion.button
             onClick={prevProject}
             aria-label="Previous project"
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+            whileHover={{ scale: 1.15, x: -5 }}
+            whileTap={{ scale: 0.9 }}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/90 hover:bg-orange-500 hover:text-white rounded-full shadow-lg flex items-center justify-center transition-colors duration-300"
           >
             ←
-          </button>
-          <button
+          </motion.button>
+          <motion.button
             onClick={nextProject}
             aria-label="Next project"
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+            whileHover={{ scale: 1.15, x: 5 }}
+            whileTap={{ scale: 0.9 }}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/90 hover:bg-orange-500 hover:text-white rounded-full shadow-lg flex items-center justify-center transition-colors duration-300"
           >
             →
-          </button>
+          </motion.button>
 
           {/* Project Content */}
           <AnimatePresence mode="wait">
@@ -87,7 +122,12 @@ export default function ProjectShowcase() {
               {/* Project Details */}
               <div className="p-8 md:p-12 flex flex-col justify-center">
                 {/* Project Badge */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                <motion.div 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="flex flex-wrap gap-2 mb-6"
+                >
                   <span className="bg-orange-500 text-white text-sm font-semibold px-4 py-2 rounded-full uppercase">
                     {project.stat}
                   </span>
@@ -102,20 +142,35 @@ export default function ProjectShowcase() {
                   >
                     {project.status}
                   </span>
-                </div>
+                </motion.div>
 
                 {/* Project Title */}
-                <h3 className="font-oswald text-3xl md:text-4xl font-bold uppercase text-gray-900 mb-4">
+                <motion.h3 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="font-oswald text-3xl md:text-4xl font-bold uppercase text-gray-900 mb-4"
+                >
                   {project.title}
-                </h3>
+                </motion.h3>
 
                 {/* Project Description */}
-                <p className="font-inter text-gray-600 text-lg leading-relaxed mb-8">
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="font-inter text-gray-600 text-lg leading-relaxed mb-8"
+                >
                   {project.description}
-                </p>
+                </motion.p>
 
                 {/* Specifications Grid */}
-                <div className="grid grid-cols-2 gap-4 mb-8">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  className="grid grid-cols-2 gap-4 mb-8"
+                >
                   <div>
                     <div className="font-inter text-gray-500 text-sm uppercase tracking-wide">
                       Location
@@ -148,10 +203,14 @@ export default function ProjectShowcase() {
                       {project.category}
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Key Features - NOW WITH UNIQUE CONTENT */}
-                <div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                >
                   <h4 className="font-oswald text-xl font-bold uppercase text-gray-900 mb-4">
                     Key Features
                   </h4>
@@ -166,7 +225,7 @@ export default function ProjectShowcase() {
                       </div>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           </AnimatePresence>

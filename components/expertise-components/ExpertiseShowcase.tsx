@@ -80,28 +80,39 @@ export default function ExpertiseShowcase() {
               key={project.title}
               variants={fadeIn}
               transition={{ delay: index * 0.1 }}
+              whileHover={{ 
+                scale: 1.02, 
+                y: -8,
+                boxShadow: "0 25px 50px -12px rgba(249, 115, 22, 0.25)"
+              }}
               className={`${project.span} relative rounded-none overflow-hidden group border border-gray-100/50 
                           transition-all duration-300 ease-in-out
-                          hover:shadow-xl hover:shadow-orange-500/20`}
+                          hover:border-orange-400 cursor-pointer`}
             >
-              <Image
-                src={
-                  failedImages[index] && project.fallback
-                    ? project.fallback
-                    : project.image
-                }
-                alt={project.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 250px"
-                unoptimized={true}
-                priority={index === 0}
-                onError={() => {
-                  if (project.fallback && !failedImages[index]) {
-                    setFailedImages((prev) => ({ ...prev, [index]: true }));
+              <motion.div
+                className="relative w-full h-full"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.4 }}
+              >
+                <Image
+                  src={
+                    failedImages[index] && project.fallback
+                      ? project.fallback
+                      : project.image
                   }
-                }}
-              />
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 250px"
+                  unoptimized={true}
+                  priority={index === 0}
+                  onError={() => {
+                    if (project.fallback && !failedImages[index]) {
+                      setFailedImages((prev) => ({ ...prev, [index]: true }));
+                    }
+                  }}
+                />
+              </motion.div>
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end p-4">
                 <h3 className="font-oswald text-xl text-white uppercase leading-snug">

@@ -95,16 +95,40 @@ export default function LeadershipTeamSection() {
                 {member.description}
               </p>
 
-              {/* Added Link to full team page */}
-              <Link
-                href="/others/team"
-                className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-white hover:text-orange-500 transition-colors"
-              >
-                View Profile <span className="ml-2">→</span>
-              </Link>
+              {/* Only show View Profile for CEO */}
+              {index === 0 && (
+                <Link
+                  href="/others/team"
+                  className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-white hover:text-orange-500 transition-colors"
+                >
+                  View Profile <span className="ml-2">→</span>
+                </Link>
+              )}
             </motion.div>
           ))}
         </div>
+
+        {/* Show All Team Members Button */}
+        <motion.div
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.6, delay: 0.6 },
+            },
+          }}
+          className="text-center mt-12"
+        >
+          <Link
+            href="/others/team"
+            className="inline-flex items-center px-6 py-3 border border-orange-500 text-orange-500 font-bold uppercase tracking-widest text-sm hover:bg-orange-500 hover:text-black transition-all duration-300"
+          >
+            Show All Our Expert Team<span className="ml-2">→</span>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

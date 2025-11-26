@@ -2,7 +2,7 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import ArchitecturalDivider from "@/components/StructuralDivider";
 
-// Import Projects components
+// Import Projects components - Premium animated components
 import ProjectsHero from "@/components/projects-components/ProjectsHero";
 import ProjectShowcase from "@/components/projects-components/ProjectShowcase";
 import ProjectsCTA from "@/components/projects-components/ProjectsCTA";

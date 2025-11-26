@@ -17,7 +17,6 @@ export default function ProjectsHero() {
     <section ref={ref} className="relative h-screen bg-black flex items-center justify-center overflow-hidden">
       {/* Background Image with enhanced brightness and parallax */}
       <motion.div
-        style={{ y }}
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url("/expertise-images/AfiTower.PNG")',

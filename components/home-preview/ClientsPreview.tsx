@@ -266,21 +266,27 @@ export default function ClientsPreview() {
           className="max-w-4xl mx-auto relative"
         >
           {/* EXTERNAL NAVIGATION ARROWS - POSITIONED OUTSIDE CARD */}
-          <button
+          <motion.button
             onClick={prevTestimonial}
             aria-label="Previous testimonial"
-            className="absolute -left-16 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-orange-500 hover:bg-orange-600 rounded-none flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg hidden lg:flex"
+            whileHover={{ scale: 1.15, x: -5 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            className="absolute -left-16 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-orange-500 hover:bg-orange-600 rounded-none flex items-center justify-center transition-colors duration-300 shadow-lg hidden lg:flex"
           >
             <span className="text-white text-lg font-bold">←</span>
-          </button>
+          </motion.button>
 
-          <button
+          <motion.button
             onClick={nextTestimonial}
             aria-label="Next testimonial"
-            className="absolute -right-16 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-orange-500 hover:bg-orange-600 rounded-none flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg hidden lg:flex"
+            whileHover={{ scale: 1.15, x: 5 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            className="absolute -right-16 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-orange-500 hover:bg-orange-600 rounded-none flex items-center justify-center transition-colors duration-300 shadow-lg hidden lg:flex"
           >
             <span className="text-white text-lg font-bold">→</span>
-          </button>
+          </motion.button>
 
           {/* TESTIMONIAL CARD - WITH GLASS EFFECT & CIRCULAR QUOTE */}
           <div

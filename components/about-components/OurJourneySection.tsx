@@ -2,6 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useState, useEffect } from "react";
 
 /*
   SPECIFICATION FOR: OurJourneySection (V11 - The "Squeeze" Fix)
@@ -66,6 +67,35 @@ const OurJourneySection = () => {
     threshold: 0.1,
   });
 
+  const [counts, setCounts] = useState(statistics.map(() => 0));
+
+  useEffect(() => {
+    if (inView) {
+      const timers = statistics.map((stat, index) => {
+        const target = parseInt(stat.value.replace(/\D/g, ''));
+        const duration = 2000; // 2 seconds for smooth animation
+        const steps = 60; // 60fps
+        const increment = target / steps;
+        let current = 0;
+        let step = 0;
+        const timer = setInterval(() => {
+          step++;
+          current = Math.min(target, Math.floor(increment * step));
+          setCounts(prev => {
+            const newCounts = [...prev];
+            newCounts[index] = current;
+            return newCounts;
+          });
+          if (step >= steps) {
+            clearInterval(timer);
+          }
+        }, duration / steps);
+        return timer;
+      });
+      return () => timers.forEach(clearInterval);
+    }
+  }, [inView]);
+
   return (
     <section
       ref={ref}
@@ -111,10 +141,10 @@ const OurJourneySection = () => {
               animate={inView ? "visible" : "hidden"}
               variants={fadeIn(0.2)}
             >
-              {statistics.map((stat) => (
+              {statistics.map((stat, index) => (
                 <div key={stat.label} className="text-left">
                   <span className="font-oswald text-4xl lg:text-5xl font-medium text-orange-500">
-                    {stat.value}
+                    {counts[index]}{stat.value.replace(/\d+/g, '')}
                   </span>
                   <p className="font-inter text-xs uppercase text-gray-600 tracking-wider mt-1">
                     {stat.label}

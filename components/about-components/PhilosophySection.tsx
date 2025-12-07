@@ -98,14 +98,20 @@ export default function PhilosophySection() {
               </span>
 
               {/* Image */}
-              <div className="mb-6 relative h-64">
+              <motion.div 
+                whileHover={{ scale: 1.03, y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="mb-6 relative h-64 overflow-hidden rounded-lg cursor-pointer group"
+              >
                 <Image
                   src={pillar.image}
                   alt={pillar.title}
                   fill
-                  className="object-cover rounded-lg"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-              </div>
+                {/* Orange overlay on hover */}
+                <div className="absolute inset-0 bg-orange-500/0 group-hover:bg-orange-500/10 transition-all duration-500" />
+              </motion.div>
 
               {/* Sub-Heading */}
               <h3 className="font-oswald text-xl font-medium uppercase tracking-wider text-gray-900 mb-4">

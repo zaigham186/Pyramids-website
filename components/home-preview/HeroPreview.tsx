@@ -195,11 +195,21 @@ export default function HeroPreview() {
               transition={{ duration: 0.7, delay: 0.15 }}
               className="font-oswald text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold uppercase leading-tight"
             >
-              {videoSlides[activeSlide]?.title}
+              <motion.span
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="inline-block"
+              >
+                {videoSlides[activeSlide]?.title}
+              </motion.span>
               <br className="hidden md:block" />{" "}
-              <span className="text-orange-500">
+              <motion.span 
+                animate={{ y: [0, 5, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="text-orange-500 inline-block"
+              >
                 {videoSlides[activeSlide]?.subtitle}
-              </span>
+              </motion.span>
             </motion.h1>
 
             <motion.p
@@ -250,9 +260,14 @@ export default function HeroPreview() {
               className="w-full flex justify-center"
             >
               <motion.button
-                whileHover={{ scale: 1.03, y: -1 }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  y: -3,
+                  boxShadow: "0 15px 30px rgba(249, 115, 22, 0.4)"
+                }}
                 whileTap={{ scale: 0.97 }}
-                className="px-8 py-4 bg-orange-500 text-black font-bold text-lg rounded-none uppercase tracking-wider transition-all duration-300 hover:bg-white flex items-center justify-center gap-2 font-inter border-2 border-orange-500 hover:border-white"
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                className="px-8 py-4 bg-orange-500 text-black font-bold text-lg rounded-none uppercase tracking-wider transition-colors duration-300 hover:bg-white flex items-center justify-center gap-2 font-inter border-2 border-orange-500 hover:border-white"
               >
                 Get In Touch
                 <ArrowRight size={18} />

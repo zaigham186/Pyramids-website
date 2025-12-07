@@ -91,9 +91,15 @@ const ExpertiseStats = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {statsData.map((stat, index) => (
-            <div
+            <motion.div
               key={stat.label}
-              className="group relative bg-white border border-gray-100 rounded-2xl p-8 text-center transition-all duration-500 hover:-translate-y-2 cursor-pointer shadow-[0_4px_15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(249,115,22,0.15)] hover:border-orange-300"
+              whileHover={{ 
+                y: -10, 
+                scale: 1.02,
+                boxShadow: "0 25px 50px -12px rgba(249, 115, 22, 0.2)"
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="group relative bg-white border border-gray-100 rounded-2xl p-8 text-center cursor-pointer shadow-[0_4px_15px_rgba(0,0,0,0.05)] hover:border-orange-300"
             >
               {/* Icon-like accent */}
               <div className="absolute top-4 right-4 w-3 h-3 bg-orange-500/20 rounded-full group-hover:scale-150 transition-transform duration-500" />
@@ -115,7 +121,7 @@ const ExpertiseStats = () => {
 
               {/* Bottom accent line */}
               <div className="absolute bottom-0 left-1/4 w-1/2 h-0.5 bg-gradient-to-r from-transparent via-orange-500/30 to-transparent group-hover:via-orange-500/60 transition-all duration-500" />
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

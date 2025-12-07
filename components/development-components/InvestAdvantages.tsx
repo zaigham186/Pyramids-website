@@ -222,7 +222,13 @@ const InvestAdvantages = () => {
                   initial="hidden"
                   animate={inView ? "visible" : "hidden"}
                   variants={fadeIn(0.3 + index * 0.1)}
-                  className="flex items-start space-x-4 p-4 border border-white/10 bg-gray-900/50 hover:border-orange-500/50 transition-all duration-300 group"
+                  whileHover={{ 
+                    y: -5,
+                    scale: 1.02,
+                    boxShadow: "0 15px 30px rgba(249, 115, 22, 0.2)"
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="flex items-start space-x-4 p-4 border border-white/10 bg-gray-900/50 hover:border-orange-500/50 transition-colors duration-300 group cursor-pointer"
                 >
                   {/* Icon */}
                   <div className="flex-shrink-0 w-12 h-12 bg-orange-500/10 rounded-lg flex items-center justify-center group-hover:bg-orange-500/20 transition-colors">
@@ -310,9 +316,14 @@ const InvestAdvantages = () => {
               {/* CTA */}
               <motion.a
                 href="/contact"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="block w-full bg-orange-500 text-black font-bold uppercase py-4 text-center font-inter text-sm border-2 border-orange-500 hover:bg-white transition-all duration-300"
+                whileHover={{ 
+                  scale: 1.03, 
+                  y: -2,
+                  boxShadow: "0 15px 30px rgba(249, 115, 22, 0.3)"
+                }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                className="block w-full bg-orange-500 text-black font-bold uppercase py-4 text-center font-inter text-sm border-2 border-orange-500 hover:bg-white transition-colors duration-300"
               >
                 Schedule Investment Consultation
               </motion.a>

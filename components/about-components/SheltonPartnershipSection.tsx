@@ -91,9 +91,14 @@ const SheltonPartnershipSection = () => {
             >
               <motion.a
                 href="/developments"
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ 
+                  scale: 1.08, 
+                  y: -4,
+                  boxShadow: "0 20px 40px rgba(249, 115, 22, 0.4)"
+                }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-orange-500 text-black font-bold uppercase px-8 py-4 rounded-lg font-inter text-sm border-2 border-orange-500 hover:bg-white transition-all duration-300 inline-flex items-center space-x-3"
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="bg-orange-500 text-black font-bold uppercase px-8 py-4 rounded-lg font-inter text-sm border-2 border-orange-500 hover:bg-white transition-colors duration-300 inline-flex items-center space-x-3"
               >
                 <span>Explore Developments</span>
                 <svg
@@ -125,7 +130,9 @@ const SheltonPartnershipSection = () => {
 
           {/* RIGHT COLUMN: Premium Visual */}
           <motion.div
-            className="relative h-full min-h-[400px] lg:min-h-[500px] rounded-2xl overflow-hidden group"
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className="relative h-full min-h-[400px] lg:min-h-[500px] rounded-2xl overflow-hidden group cursor-pointer"
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             variants={fadeIn(0.4)}

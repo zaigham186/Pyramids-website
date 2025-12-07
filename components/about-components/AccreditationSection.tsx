@@ -104,7 +104,15 @@ const AccreditationSection = () => {
             </div>
 
             {/* Black Certificate Card */}
-            <div className="relative bg-black text-white rounded-2xl p-8 shadow-2xl border border-gray-800 z-10 w-full max-w-md">
+            <motion.div 
+              whileHover={{ 
+                y: -10, 
+                scale: 1.02,
+                boxShadow: "0 30px 60px -15px rgba(0, 0, 0, 0.5)"
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="relative bg-black text-white rounded-2xl p-8 shadow-2xl border border-gray-800 z-10 w-full max-w-md cursor-pointer"
+            >
               {/* Card Content */}
               <div>
                 {/* Title */}
@@ -150,7 +158,7 @@ const AccreditationSection = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

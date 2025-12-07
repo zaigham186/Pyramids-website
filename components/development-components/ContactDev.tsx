@@ -160,7 +160,12 @@ const ContactDev = () => {
                   initial="hidden"
                   animate={inView ? "visible" : "hidden"}
                   variants={fadeIn(0.3 + index * 0.1)}
-                  className="flex items-start space-x-4 p-4 bg-white border border-gray-200 hover:border-orange-500/30 transition-all duration-300 group"
+                  whileHover={{ 
+                    y: -3,
+                    boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)"
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="flex items-start space-x-4 p-4 bg-white border border-gray-200 hover:border-orange-500/30 transition-colors duration-300 group cursor-pointer"
                 >
                   {/* Icon */}
                   <div className="flex-shrink-0 w-12 h-12 bg-orange-500/10 flex items-center justify-center group-hover:bg-orange-500/20 transition-colors">
@@ -267,9 +272,14 @@ const ContactDev = () => {
                 >
                   <motion.a
                     href="/contact"
-                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileHover={{ 
+                      scale: 1.08, 
+                      y: -4,
+                      boxShadow: "0 20px 40px rgba(249, 115, 22, 0.4)"
+                    }}
                     whileTap={{ scale: 0.95 }}
-                    className="inline-block bg-orange-500 text-black font-bold uppercase px-12 py-4 shadow-2xl hover:bg-white transition-all duration-300 cursor-pointer font-inter text-lg border-2 border-orange-500 hover:border-white"
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    className="inline-block bg-orange-500 text-black font-bold uppercase px-12 py-4 shadow-2xl hover:bg-white transition-colors duration-300 cursor-pointer font-inter text-lg border-2 border-orange-500 hover:border-white"
                   >
                     START YOUR INVESTMENT
                   </motion.a>

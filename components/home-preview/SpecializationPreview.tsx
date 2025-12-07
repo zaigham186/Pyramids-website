@@ -155,18 +155,27 @@ export default function SpecializationPreview() {
                   key={index}
                   variants={fadeIn}
                   transition={{ duration: 0.6, ease: "easeOut" }}
+                  whileHover={{ 
+                    scale: 1.03, 
+                    y: -8,
+                    boxShadow: "0 20px 40px rgba(249, 115, 22, 0.2)"
+                  }}
                   className={`relative flex flex-col justify-start p-6 
                               bg-neutral-900 rounded-none 
                               border border-neutral-800
                               transition-all duration-300 ease-in-out
-                              hover:-translate-y-1 hover:scale-[1.02] 
                               hover:border-orange-500 
-                              hover:shadow-lg hover:shadow-orange-500/20`}
+                              cursor-pointer`}
                 >
-                  <IconComponent
-                    className="w-12 h-12 text-white mb-4"
-                    strokeWidth={1}
-                  />
+                  <motion.div
+                    whileHover={{ rotate: [0, -5, 5, -5, 0], scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <IconComponent
+                      className="w-12 h-12 text-white mb-4"
+                      strokeWidth={1}
+                    />
+                  </motion.div>
 
                   <div className="text-left">
                     <h3 className="text-lg font-semibold text-white uppercase mb-2">

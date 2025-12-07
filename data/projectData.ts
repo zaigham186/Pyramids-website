@@ -33,7 +33,7 @@ export const projects: Project[] = [
     description:
       "A landmark 18-story commercial and residential complex in Peshawar, featuring extensive retail space and luxury apartments.",
     location: "Peshawar, Pakistan",
-    status: "In Progress",
+    status: "Completed",
     area: "525,000 sq ft",
     year: "2019-20",
     features: [

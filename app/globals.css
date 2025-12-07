@@ -1,6 +1,28 @@
 @import "tailwindcss";
 @custom-variant dark (&:is(.dark *));
 
+/* Lenis Smooth Scroll Configuration */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
 /* Font configuration for Tailwind v4 */
 @theme {
   --font-sans: var(--font-inter), system-ui, sans-serif;

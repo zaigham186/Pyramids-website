@@ -23,7 +23,7 @@ export const developments = [
   },
   {
     id: 2,
-    title: "Lanmark Peshawar",
+    title: "Landmark Peshawar",
     category: "Mixed-Use",
     location: "University Road, Peshawar",
     price: "Contact for Price",

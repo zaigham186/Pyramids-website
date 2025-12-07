@@ -82,35 +82,74 @@ export default function Navbar() {
                 </Link>
               ))}
 
-              {/* Others Dropdown */}
+              {/* Others Dropdown - Premium Glassmorphic Design */}
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setIsOthersOpen(!isOthersOpen)}
                   onMouseEnter={() => setIsOthersOpen(true)}
-                  className="text-base font-medium text-foreground hover:text-blue-500 transition-colors relative group flex items-center gap-1 font-inter"
+                  className="text-base font-medium text-foreground hover:text-orange-500 transition-all duration-300 relative group flex items-center gap-1 font-inter"
                 >
                   Others
-                  <ChevronDown size={20} />
+                  <motion.div
+                    animate={{ rotate: isOthersOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  >
+                    <ChevronDown size={20} />
+                  </motion.div>
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
                 </button>
 
                 {isOthersOpen && (
-                  <div
+                  <motion.div
+                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
                     onMouseEnter={() => setIsOthersOpen(true)}
                     onMouseLeave={() => setIsOthersOpen(false)}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-0 bg-gray-100 border border-gray-300 py-2 w-48 z-50"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 z-50"
                   >
-                    {otherLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className="block px-4 py-3 text-base text-foreground hover:bg-gray-200 transition-colors font-inter"
-                        onClick={() => setIsOthersOpen(false)}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
+                    {/* Glassmorphic Container */}
+                    <div className="bg-white/95 backdrop-blur-xl border border-gray-200/50 rounded-2xl shadow-2xl shadow-black/10 overflow-hidden">
+                      {/* Subtle gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-orange-50/30 via-transparent to-blue-50/20 pointer-events-none" />
+
+                      {/* Dropdown Items */}
+                      <div className="relative py-2">
+                        {otherLinks.map((link, index) => (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            onClick={() => setIsOthersOpen(false)}
+                          >
+                            <motion.div
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: index * 0.05, duration: 0.2 }}
+                              className="group/item relative mx-2 my-1"
+                            >
+                              <div className="px-4 py-3 text-base font-medium text-gray-700 hover:text-orange-600 transition-all duration-300 rounded-xl hover:bg-gradient-to-r hover:from-orange-50/80 hover:to-transparent cursor-pointer font-inter relative overflow-hidden">
+                                {/* Hover glow effect */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-orange-400/0 via-orange-400/5 to-orange-400/0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
+
+                                {/* Content */}
+                                <span className="relative flex items-center justify-between">
+                                  {link.label}
+                                  <motion.span
+                                    initial={{ x: -5, opacity: 0 }}
+                                    whileHover={{ x: 0, opacity: 1 }}
+                                    className="text-orange-500"
+                                  >
+                                    <ArrowRight size={16} />
+                                  </motion.span>
+                                </span>
+                              </div>
+                            </motion.div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
                 )}
               </div>
             </div>

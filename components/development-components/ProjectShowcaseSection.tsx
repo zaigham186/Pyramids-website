@@ -136,9 +136,8 @@ const ProjectModal = memo(({ isOpen, onClose, project }: ProjectModalProps) => {
 
   return createPortal(
     <div
-      className={`fixed inset-0 z-[99999] flex items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-sm transition-opacity duration-300 ${
-        isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-      }`}
+      className={`fixed inset-0 z-[99999] flex items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-sm transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -206,11 +205,10 @@ const ProjectModal = memo(({ isOpen, onClose, project }: ProjectModalProps) => {
               type="button"
               key={tab.id}
               onClick={() => handleTabClick(tab.id)}
-              className={`flex-1 py-3 sm:py-4 font-inter text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 ${
-                activeTab === tab.id
-                  ? "text-orange-500 border-b-2 border-orange-500 font-semibold"
-                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-              }`}
+              className={`flex-1 py-3 sm:py-4 font-inter text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 ${activeTab === tab.id
+                ? "text-orange-500 border-b-2 border-orange-500 font-semibold"
+                : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                }`}
             >
               {tab.label}
             </button>
@@ -390,69 +388,83 @@ const ProjectCard = memo(({ project, onProjectClick }: ProjectCardProps) => {
       tabIndex={0}
       aria-label={`View details for ${project.title}`}
     >
-      <div className="bg-white border border-gray-200 shadow-lg overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:border-orange-500/30 h-full">
+      <div className="relative bg-white border border-gray-200/50 shadow-xl overflow-hidden transition-all duration-500 group-hover:shadow-2xl group-hover:border-orange-500/40 h-full rounded-xl">
         {/* Image Container - Fixed aspect ratio */}
         <div className="relative aspect-[4/3] overflow-hidden">
           <Image
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-cover transition-all duration-700 group-hover:scale-110"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             placeholder="blur"
             blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaUMk8DFbI5oW5I1aYrC4bkS0LDyYWukbqXKJ4ErjLk4gY8OMk6kJA+4n//2Q=="
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+          {/* Enhanced Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-500 group-hover:from-black/90" />
+
+          {/* Premium Glow Effect on Hover */}
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-orange-500/0 group-hover:from-orange-500/10 group-hover:to-transparent transition-all duration-500" />
 
           {/* Overlay Content */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-            <h3 className="font-oswald text-2xl uppercase mb-2">
+          <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform transition-transform duration-500 group-hover:translate-y-[-4px]">
+            <h3 className="font-oswald text-2xl lg:text-3xl uppercase mb-2 drop-shadow-lg">
               {project.title}
             </h3>
-            <p className="font-inter text-gray-300 text-sm">
+            <p className="font-inter text-gray-200 text-sm flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
               {project.location}
             </p>
           </div>
         </div>
 
-        <div className="p-6">
+        <div className="p-6 bg-gradient-to-b from-white to-gray-50/50">
           <div className="flex justify-between items-start mb-4">
             <div>
-              <span className="font-inter text-orange-500 text-sm uppercase tracking-wider">
+              <span className="inline-block px-3 py-1 bg-gradient-to-r from-orange-500/10 to-orange-500/5 border border-orange-500/20 rounded-full font-inter text-orange-600 text-xs font-semibold uppercase tracking-wider">
                 {project.category}
               </span>
-              <p className="font-oswald text-lg text-gray-900 mt-1">
+              <p className="font-oswald text-xl text-gray-900 mt-3 font-bold">
                 {project.price}
               </p>
             </div>
           </div>
 
-          <p className="font-inter text-gray-600 text-sm mb-4 leading-relaxed line-clamp-3">
+          <p className="font-inter text-gray-600 text-sm mb-5 leading-relaxed line-clamp-3">
             {project.description}
           </p>
 
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap gap-2 mb-5">
             {project.features.slice(0, 3).map((feature, featureIndex) => (
               <span
                 key={featureIndex}
-                className="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-inter rounded"
+                className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-inter rounded-full border border-gray-200"
               >
                 {feature}
               </span>
             ))}
             {project.features.length > 3 && (
-              <span className="px-2 py-1 bg-gray-100 text-gray-500 text-xs font-inter rounded">
+              <span className="px-3 py-1 bg-orange-50 text-orange-600 text-xs font-inter rounded-full border border-orange-200 font-semibold">
                 +{project.features.length - 3} more
               </span>
             )}
           </div>
 
           <button
-            className="w-full py-3 border border-gray-300 text-gray-700 font-inter text-sm uppercase tracking-wider hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+            className="w-full py-3 border-2 border-gray-300 text-gray-700 font-inter text-sm font-semibold uppercase tracking-wider hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 rounded-lg group-hover:border-orange-500 group-hover:text-orange-600"
             aria-label={`View project details for ${project.title}`}
           >
             View Project Details
           </button>
+        </div>
+
+        {/* Premium Border Glow on Hover */}
+        <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+          <div className="absolute inset-0 rounded-xl shadow-[0_0_30px_rgba(255,107,53,0.3)]" />
         </div>
       </div>
     </div>
@@ -485,37 +497,69 @@ const ProjectShowcaseSection = () => {
     <OptimizedMotion>
       <section
         ref={ref}
-        className="relative w-full bg-white text-black overflow-hidden py-20 lg:py-28"
+        className="relative w-full bg-gradient-to-b from-white via-gray-50 to-white text-black overflow-hidden py-24 lg:py-32"
         aria-labelledby="projects-section-title"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Luxury Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.02]">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(255, 107, 53, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 107, 53, 0.1) 1px, transparent 1px)
+              `,
+              backgroundSize: "60px 60px",
+            }}
+          />
+        </div>
+
+        {/* Decorative Gradient Orbs */}
+        <div className="absolute top-40 right-20 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-40 left-20 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-20"
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             variants={fadeIn(0)}
           >
-            <div className="flex items-center justify-center mb-4">
-              <div className="w-4 h-4 bg-orange-500 mr-3" />
-              <span className="font-inter text-orange-500 font-medium text-sm tracking-widest uppercase">
-                FEATURED DEVELOPMENTS
-              </span>
-            </div>
-
+            {/* Main Heading */}
             <h2
               id="projects-section-title"
-              className="font-oswald text-4xl lg:text-5xl font-medium uppercase text-gray-900 leading-tight mb-6"
+              className="font-oswald text-5xl lg:text-7xl font-bold uppercase text-gray-900 leading-tight mb-8"
             >
               Current
               <br />
-              <span className="text-orange-500">Projects</span>
+              <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">
+                Projects
+              </span>
             </h2>
 
-            <p className="font-inter text-lg text-gray-600 max-w-2xl mx-auto">
-              Explore our premium real estate developments that combine luxury
-              living with exceptional investment potential.
-            </p>
+            {/* Description in Glassmorphic Card */}
+            <div className="max-w-3xl mx-auto">
+              <div className="relative bg-white/60 backdrop-blur-xl rounded-2xl p-8 shadow-xl border border-gray-200/50">
+                <p className="font-inter text-lg lg:text-xl text-gray-700 leading-relaxed">
+                  Explore our{" "}
+                  <span className="font-semibold text-gray-900">premium real estate developments</span>{" "}
+                  that combine{" "}
+                  <span className="font-semibold text-orange-600">luxury living</span>{" "}
+                  with{" "}
+                  <span className="font-semibold text-orange-600">exceptional investment potential</span>.
+                </p>
+                {/* Subtle Inner Glow */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orange-500/5 via-transparent to-orange-500/5 pointer-events-none" />
+              </div>
+            </div>
+
+            {/* Decorative Element */}
+            <div className="mt-10 flex justify-center items-center gap-4">
+              <div className="h-px w-20 bg-gradient-to-r from-transparent via-orange-500/50 to-orange-500" />
+              <div className="w-2 h-2 bg-orange-500 rotate-45" />
+              <div className="h-px w-20 bg-gradient-to-l from-transparent via-orange-500/50 to-orange-500" />
+            </div>
           </motion.div>
 
           {/* Projects Grid */}

@@ -59,7 +59,7 @@ export default function ContactPage() {
           subject: formData.subject,
           message: formData.message,
           // UPDATED: Sending to Imran's email
-          to_email: "imran514@hotmail.com",
+          to_email: "Noohsiddique514@gmail.com",
           reply_to: formData.email,
         },
         "Cpn322BDQ9EFLPqiq"
@@ -311,7 +311,7 @@ export default function ContactPage() {
                           Peshawar Office
                         </h4>
                         <p className="font-inter text-gray-600">
-                          LG 25, Town Heights, Old Bara Road, Peshawar
+                          3rd floor, Uhad tower, Phase 3 chowk, Peshawar
                         </p>
                       </div>
                     </div>
@@ -333,7 +333,7 @@ export default function ContactPage() {
                         <p className="font-inter text-gray-600">
                           0334-514-8335
                         </p>
-                        <p className="font-inter text-gray-600">051-230-5537</p>
+                        <p className="font-inter text-gray-600">0301-0505015</p>
                       </div>
                     </div>
 
@@ -343,7 +343,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="font-inter text-gray-600">
-                          imran514@hotmail.com
+                          Noohsiddique514@gmail.com
                         </p>
                       </div>
                     </div>

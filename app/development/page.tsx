@@ -4,6 +4,7 @@ import ArchitecturalDivider from "@/components/StructuralDivider";
 
 // Development page components
 import HeroDevelopment from "@/components/development-components/HeroDevelopment";
+import IntroSection from "@/components/development-components/IntroSection";
 import ProjectShowcaseSection from "@/components/development-components/ProjectShowcaseSection";
 import FloorPlansSection from "@/components/development-components/FloorPlansSection";
 import InvestAdvantages from "@/components/development-components/InvestAdvantages";
@@ -21,6 +22,9 @@ export default function DevelopmentsPage() {
 
       {/* Scrollable Content */}
       <div className="relative z-10 bg-transparent">
+        {/* INTRO: WHITE - Company Introduction */}
+        <IntroSection />
+
         {/* SECTION 1: WHITE - Projects Showcase */}
         <ProjectShowcaseSection />
 

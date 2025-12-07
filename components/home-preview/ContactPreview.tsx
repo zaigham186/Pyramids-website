@@ -49,7 +49,7 @@ export default function ContactPreview() {
           subject: formData.subject,
           message: formData.message,
           // UPDATED HERE: Now sending to Imran
-          to_email: "imran514@hotmail.com",
+          to_email: "Noohsiddique514@gmail.com",
           reply_to: formData.email,
         },
         "Cpn322BDQ9EFLPqiq" // Your Public Key
@@ -140,20 +140,20 @@ export default function ContactPreview() {
                   {
                     icon: Mail,
                     title: "Email",
-                    value: "imran514@hotmail.com",
+                    value: "Noohsiddique514@gmail.com",
                     description: "Send us your project details",
                   },
                   {
                     icon: Phone,
                     title: "Phone",
-                    value: "0334-514-8335",
+                    value: "0301-0505015",
                     description: "Direct consultation",
                   },
                   {
                     icon: MapPin,
                     title: "Studio",
                     value: "Peshawar Office",
-                    description: "LG 25, Town Heights, Old Bara Road, Peshawar",
+                    description: "3rd floor, Uhad tower, Phase 3 chowk, Peshawar",
                   },
                 ].map((contact, index) => {
                   const Icon = contact.icon;

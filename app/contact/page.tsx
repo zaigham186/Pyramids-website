@@ -5,11 +5,6 @@ import { useInView } from "react-intersection-observer";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Building2, Phone, Mail, Clock } from "lucide-react";
-import emailjs from "@emailjs/browser";
-import { useState, FormEvent, ChangeEvent } from "react";
-
-// Initialize EmailJS
-emailjs.init("Cpn322BDQ9EFLPqiq");
 
 export default function ContactPage() {
   const { ref: formRef, inView: formInView } = useInView({
@@ -17,75 +12,10 @@ export default function ContactPage() {
     threshold: 0.1,
   });
 
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const [status, setStatus] = useState("");
-
   const scrollToMap = () => {
     document
       .getElementById("office-map")
       ?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setStatus("");
-
-    try {
-      const result = await emailjs.send(
-        "service_7syzf8p",
-        "template_siau848",
-        {
-          from_name: `${formData.firstName} ${formData.lastName}`,
-          from_email: formData.email,
-          phone: formData.phone,
-          subject: formData.subject,
-          message: formData.message,
-          // UPDATED: Sending to Imran's email
-          to_email: "Noohsiddique514@gmail.com",
-          reply_to: formData.email,
-        },
-        "Cpn322BDQ9EFLPqiq"
-      );
-
-      console.log("✅ Email sent successfully:", result);
-      setStatus("success");
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-      });
-    } catch (error: any) {
-      console.error("❌ Email sending failed - Full error:", error);
-      console.error("❌ Error details:", {
-        text: error.text,
-        status: error.status,
-        message: error.message,
-      });
-      setStatus("error");
-    } finally {
-      setIsLoading(false);
-    }
   };
 
   return (
@@ -132,138 +62,20 @@ export default function ContactPage() {
                 Send Us a Message
               </h2>
 
-              {/* Status Messages */}
-              {status === "success" && (
-                <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
-                  ✅ Message sent successfully! We'll get back to you soon.
-                </div>
-              )}
-              {status === "error" && (
-                <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
-                  ❌ Failed to send message. Please try again or contact us
-                  directly.
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="firstName"
-                      className="block font-inter text-gray-700 mb-2"
-                    >
-                      First Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="lastName"
-                      className="block font-inter text-gray-700 mb-2"
-                    >
-                      Last Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block font-inter text-gray-700 mb-2"
-                  >
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="block font-inter text-gray-700 mb-2"
-                  >
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block font-inter text-gray-700 mb-2"
-                  >
-                    Subject *
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block font-inter text-gray-700 mb-2"
-                  >
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={6}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300 resize-vertical"
-                  ></textarea>
-                </div>
-
-                <motion.button
-                  type="submit"
-                  disabled={isLoading}
-                  whileHover={{ scale: isLoading ? 1 : 1.02 }}
-                  whileTap={{ scale: isLoading ? 1 : 0.98 }}
-                  className="w-full bg-orange-500 text-black font-inter font-bold text-lg uppercase py-4 rounded-lg hover:bg-orange-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-300 shadow-lg hover:shadow-orange-500/25"
+              {/* Google Form Iframe */}
+              <div className="w-full rounded-lg overflow-hidden shadow-lg border border-gray-200">
+                <iframe
+                  src="https://docs.google.com/forms/d/e/1FAIpQLSc1b5hbOTckiGqX1391pBDX4gl6RsJIWy237Z7JLYpXzSCHBA/viewform?embedded=true"
+                  width="100%"
+                  height="900"
+                  frameBorder="0"
+                  marginHeight={0}
+                  marginWidth={0}
+                  title="Contact Form"
                 >
-                  {isLoading ? "Sending..." : "Send Message"}
-                </motion.button>
-              </form>
+                  Loading…
+                </iframe>
+              </div>
             </motion.div>
 
             {/* Column 2: Contact Information - PREMIUM CARD */}

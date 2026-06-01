@@ -1,9 +1,7 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   /* config options here */
-  reactCompiler: true,
-
+  
   // Add these video optimization settings:
   experimental: {
     optimizeCss: true,
@@ -11,6 +9,7 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     domains: [],
+    qualities: [75, 90, 95, 100], // Add quality levels to fix the warning
   },
   async headers() {
     return [
@@ -38,4 +37,4 @@ const nextConfig: NextConfig = {
   compress: true,
 };
 
-export default nextConfig;
+module.exports = nextConfig;

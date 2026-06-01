@@ -23,6 +23,7 @@ export default function Navbar() {
     { href: "/others/clients", label: "Clients" },
     { href: "/others/team", label: "Team" },
     { href: "/others/gallery", label: "Gallery" },
+    { href: "/others/certificates", label: "Certificates" },
   ];
 
   // Close dropdown when clicking outside

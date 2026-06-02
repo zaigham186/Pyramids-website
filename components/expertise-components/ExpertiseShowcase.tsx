@@ -24,7 +24,7 @@ const expertiseProjects: {
     span: "lg:col-span-2",
   },
   {
-    title: "Capital Heights, Islamabad",
+    title: "Diamond Mall, Peshawar",
     image: "/CapitalHeights.PNG",
     span: "lg:col-span-1",
   },

@@ -10,7 +10,7 @@ import TeamShowcase from "@/components/team-components/TeamShowcase";
 
 export default function TeamPage() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-black overflow-x-hidden">
       <Navbar />
 
       {/* Section 1: Hero (Black) */}

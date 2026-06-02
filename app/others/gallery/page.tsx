@@ -9,7 +9,7 @@ import GalleryGrid from "@/components/gallery-components/GalleryGrid";
 
 export default function GalleryPage() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-black overflow-x-hidden">
       <Navbar />
       {/* Section 1: Hero (Black) */}
       <GalleryHero />

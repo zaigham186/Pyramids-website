@@ -30,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${oswald.variable}`}>
+    <html lang="en" className={`${inter.variable} ${oswald.variable} overflow-x-hidden`}>
       <head>
         <link
           rel="preload"
@@ -39,7 +39,7 @@ export default function RootLayout({
           type="video/mp4"
         />
       </head>
-      <body className="font-sans">
+      <body className="font-sans overflow-x-hidden">
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
         
         {/* WhatsApp Floating Button */}

@@ -9,7 +9,7 @@ import ProjectsCTA from "@/components/projects-components/ProjectsCTA";
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
 
       {/* Sticky Hero (z-0) */}

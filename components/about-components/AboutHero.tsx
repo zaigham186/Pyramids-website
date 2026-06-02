@@ -47,8 +47,7 @@ const AboutHero = () => {
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-black text-white h-screen flex items-center overflow-hidden"
-      // CHANGED: Replaced min-h-[] with h-screen to fill the sticky wrapper
+      className="relative w-full bg-black text-white min-h-screen flex items-center overflow-hidden"
     >
       {/* LAYER 1: BACKGROUND IMAGE */}
       <motion.div style={{ y }} className="absolute inset-0 z-0">
@@ -71,7 +70,7 @@ const AboutHero = () => {
       {/* LAYER 2: FOREGROUND CONTENT */}
       <motion.div 
         style={{ opacity }}
-        className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-36 w-full"
+        className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-28 lg:py-36 w-full"
       >
         <motion.div
           ref={ref}
@@ -82,35 +81,33 @@ const AboutHero = () => {
         >
           {/* Orange Accent Label */}
           <motion.div
-            className="flex items-center mb-6"
+            className="flex items-center mb-4 sm:mb-6"
             variants={itemVariants}
           >
-            <div className="w-4 h-4 bg-orange-500 mr-3" />
-            <span className="font-inter text-orange-500 font-medium text-sm tracking-widest uppercase">
-              ABOUT PYRAMIDS
+            <div className="w-3 h-3 sm:w-4 sm:h-4 bg-orange-500 mr-2 sm:mr-3" />
+            <span className="font-inter text-orange-500 font-medium text-xs sm:text-sm tracking-widest uppercase">
+              About Pyramids
             </span>
           </motion.div>
 
           {/* Main Headline */}
           <motion.h1
-            className="font-oswald text-5xl md:text-6xl lg:text-7xl font-medium uppercase leading-tight tracking-tight"
+            className="font-oswald text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium uppercase leading-tight tracking-tight mb-6 sm:mb-8"
             variants={itemVariants}
           >
-            Dynamic,
+            Building
             <br />
-            Multidimensional
-            <br />& Proven
+            Excellence
+            <br />
+            Since 2006
           </motion.h1>
 
           {/* Brand Description Text */}
           <motion.p
-            className="font-inter text-lg lg:text-xl text-gray-200 mt-10 max-w-md leading-relaxed"
+            className="font-inter text-sm sm:text-base lg:text-lg text-gray-300 max-w-lg leading-relaxed"
             variants={itemVariants}
           >
-            Established in 2006, Pyramids is a dynamic, fast-growing
-            organization providing multidimensional engineering and
-            architectural services, from preliminary planning to detailed
-            execution.
+            We're a fast-growing engineering and architectural firm delivering complete solutions—from initial concept to final execution. Our team brings precision, innovation, and decades of combined experience to every project.
           </motion.p>
         </motion.div>
       </motion.div>

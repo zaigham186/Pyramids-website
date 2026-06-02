@@ -11,9 +11,11 @@ import ArchitecturalDivider from "@/components/StructuralDivider";
 import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [isMounted, setIsMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -24,11 +26,16 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
 
-      {/* Conditional Hero Section */}
-      {!isMobile ? (
+      {/* Conditional Hero Section - Only render after mount to avoid hydration error */}
+      {!isMounted ? (
+        // SSR fallback: Show desktop version during SSR
+        <div className="sticky top-0 h-screen z-0">
+          <HeroPreview />
+        </div>
+      ) : !isMobile ? (
         // Desktop: Sticky hero with fixed height
         <div className="sticky top-0 h-screen z-0">
           <HeroPreview />

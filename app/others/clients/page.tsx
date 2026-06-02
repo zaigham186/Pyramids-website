@@ -11,7 +11,7 @@ import ExpertiseCTA from "@/components/expertise-components/ExpertiseCTA"; // As
 
 export default function ClientsPage() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-black overflow-x-hidden">
       <Navbar />
 
       {/* SECTION 1: "TRUST" (Black) 

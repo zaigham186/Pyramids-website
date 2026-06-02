@@ -118,44 +118,40 @@ const ExpertiseHero = () => {
         {/* ADJUSTED POSITION: Added mt-16 (4rem) to move content down ~1.5 inches */}
         <motion.div
           ref={ref}
-          className="max-w-2xl mt-16 lg:mt-24"
+          className="max-w-2xl mt-8 sm:mt-12 md:mt-16 lg:mt-24"
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
           {/* Orange Accent Label */}
           <motion.div
-            className="flex items-center mb-6"
+            className="flex items-center mb-4 sm:mb-6"
             variants={itemVariants}
           >
-            <div className="w-4 h-4 bg-orange-500 mr-3" />
-            <span className="font-inter text-orange-500 font-medium text-sm tracking-widest uppercase">
-              OUR EXPERTISE
+            <div className="w-3 h-3 sm:w-4 sm:h-4 bg-orange-500 mr-2 sm:mr-3" />
+            <span className="font-inter text-orange-500 font-medium text-xs sm:text-sm tracking-widest uppercase">
+              Our Expertise
             </span>
           </motion.div>
 
-          {/* Main Headline - EXACT TEXT FROM BRAND DOCUMENTS */}
+          {/* Main Headline */}
           <motion.h1
-            className="font-oswald text-5xl md:text-6xl lg:text-7xl font-medium uppercase leading-tight tracking-tight"
+            className="font-oswald text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium uppercase leading-tight tracking-tight mb-6 sm:mb-8"
             variants={itemVariants}
           >
-            COMPREHENSIVE
+            Full-Service
             <br />
-            SKILL,
+            Design &
             <br />
-            FLAWLESS
-            <br />
-            EXECUTION
+            Engineering
           </motion.h1>
 
-          {/* Brand Description Text - EXACT TEXT FROM BRAND DOCUMENTS */}
+          {/* Brand Description Text */}
           <motion.p
-            className="font-inter text-lg lg:text-xl text-gray-200 mt-10 max-w-md leading-relaxed"
+            className="font-inter text-sm sm:text-base lg:text-lg text-gray-300 max-w-lg leading-relaxed"
             variants={itemVariants}
           >
-            Experience integrated mastery across all disciplines. We deliver
-            end-to-end solutions managed with accountability, innovation, and a
-            relentless focus on your success.
+            From structural engineering to architectural design, we handle every aspect of your project. One team, unified vision, seamless execution—that's how we deliver results that last.
           </motion.p>
         </motion.div>
       </motion.div>
@@ -165,7 +161,7 @@ const ExpertiseHero = () => {
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 0.8, delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30"
+        className="hidden md:block absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 z-30"
       >
         <motion.div
           className="flex flex-col items-center space-y-2"
@@ -181,9 +177,9 @@ const ExpertiseHero = () => {
           <span className="text-white text-xs font-inter tracking-widest uppercase opacity-70">
             Scroll to Explore
           </span>
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+          <div className="w-5 h-8 md:w-6 md:h-10 border-2 border-white rounded-full flex justify-center">
             <motion.div
-              className="w-1 h-3 bg-white rounded-full mt-2"
+              className="w-1 h-2 md:h-3 bg-white rounded-full mt-2"
               animate={{
                 y: [0, 12, 0],
               }}

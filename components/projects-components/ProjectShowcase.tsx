@@ -29,8 +29,6 @@ function ProjectCard({ project, index }: ProjectCardProps) {
   });
 
   const isEven = index % 2 === 0;
-  const projectNumber = String(index + 1).padStart(2, "0");
-  const totalProjects = String(projects.length).padStart(2, "0");
 
   // Filter out features that repeat the stat
   const uniqueFeatures = project.features.filter(
@@ -70,21 +68,11 @@ function ProjectCard({ project, index }: ProjectCardProps) {
             isEven ? "lg:col-start-2" : "lg:col-start-1"
           }`}
         >
-          {/* Project Number */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="font-oswald text-orange-500 text-lg font-bold mb-2"
-          >
-            {projectNumber} / {totalProjects}
-          </motion.div>
-
           {/* Project Badge */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="flex flex-wrap gap-2 mb-6"
           >
             <span className="bg-orange-500 text-white text-sm font-semibold px-4 py-2 rounded-full uppercase">
@@ -107,7 +95,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
             className="font-oswald text-3xl md:text-4xl font-bold uppercase text-gray-900 mb-4"
           >
             {project.title}
@@ -117,7 +105,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           <motion.p
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
             className="font-inter text-gray-600 text-lg leading-relaxed mb-8"
           >
             {project.description}
@@ -127,7 +115,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
             className="grid grid-cols-2 gap-4 mb-8"
           >
             <div>
@@ -168,7 +156,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.7 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
           >
             <h4 className="font-oswald text-xl font-bold uppercase text-gray-900 mb-4">
               Key Features

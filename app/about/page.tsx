@@ -13,7 +13,7 @@ import AboutCTASection from "@/components/about-components/AboutCTASection";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
 
       {/* Sticky Hero (z-0) */}

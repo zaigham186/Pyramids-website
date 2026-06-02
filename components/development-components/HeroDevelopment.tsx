@@ -47,105 +47,54 @@ const HeroDevelopment = () => {
           fill
           priority
           quality={95}
-          className="object-cover object-center scale-105"
+          className="object-cover object-center"
         />
 
-        {/* Enhanced Gradient Overlays */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/95 via-black/75 to-transparent" />
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/60 via-transparent to-black/40" />
-
-        {/* Animated Grid Pattern Overlay */}
-        <div className="absolute inset-0 z-10 opacity-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `
-                linear-gradient(rgba(255, 107, 53, 0.3) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 107, 53, 0.3) 1px, transparent 1px)
-              `,
-              backgroundSize: '100px 100px',
-              animation: 'gridPulse 8s ease-in-out infinite'
-            }}
-          />
-        </div>
-
-        {/* Luxury Glow Effect */}
-        <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-orange-500/10 blur-[120px] rounded-full" />
+        {/* Gradient Overlays */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/90 via-black/70 to-black/20" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/20 via-transparent to-black/10" />
       </div>
 
       {/* LAYER 2: FOREGROUND CONTENT */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-36 w-full">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-28 lg:py-36 w-full">
         <motion.div
-          className="max-w-3xl"
+          className="max-w-2xl"
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
           {/* Premium Accent Label */}
           <motion.div
-            className="flex items-center mb-8 group"
+            className="flex items-center mb-4 sm:mb-6"
             variants={itemVariants}
           >
-            <div className="w-1 h-12 bg-gradient-to-b from-orange-500 to-orange-600 mr-4 group-hover:h-16 transition-all duration-300" />
-            <div>
-              <span className="font-inter text-orange-400 font-semibold text-xs tracking-[0.3em] uppercase block mb-1">
-                PREMIUM OPPORTUNITIES
-              </span>
-              <div className="h-px w-32 bg-gradient-to-r from-orange-500/50 to-transparent" />
-            </div>
+            <div className="w-3 h-3 sm:w-4 sm:h-4 bg-orange-500 mr-2 sm:mr-3" />
+            <span className="font-inter text-orange-500 font-medium text-xs sm:text-sm tracking-widest uppercase">
+              Developments
+            </span>
           </motion.div>
 
-          {/* Main Headline - Enhanced Typography */}
+          {/* Main Headline */}
           <motion.h1
-            className="font-oswald text-6xl md:text-7xl lg:text-8xl font-bold uppercase leading-[0.9] tracking-tighter mb-8"
+            className="font-oswald text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium uppercase leading-tight tracking-tight mb-6 sm:mb-8"
             variants={itemVariants}
           >
-            <span className="inline-block bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
-              Premium
-            </span>
+            Invest in
             <br />
-            <span className="inline-block bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
-              Real Estate
-            </span>
+            Premium
             <br />
-            <span className="inline-block bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
-              Opportunities
-            </span>
+            Properties
           </motion.h1>
 
           {/* Enhanced Description */}
-          <motion.div
-            className="relative"
+          <motion.p
+            className="font-inter text-sm sm:text-base lg:text-lg text-gray-300 max-w-lg leading-relaxed"
             variants={itemVariants}
           >
-            <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-orange-500/50 via-orange-500/20 to-transparent" />
-            <p className="font-inter text-xl lg:text-2xl text-gray-300 max-w-2xl leading-relaxed pl-6">
-              Exclusive investment opportunities in{" "}
-              <span className="text-white font-semibold">luxury developments</span>{" "}
-              that redefine premium living and deliver{" "}
-              <span className="text-orange-400 font-semibold">exceptional returns</span>.
-            </p>
-          </motion.div>
-
-          {/* Decorative Element */}
-          <motion.div
-            className="mt-12 flex items-center gap-4"
-            variants={itemVariants}
-          >
-            <div className="h-px w-20 bg-gradient-to-r from-orange-500 to-transparent" />
-            <div className="w-2 h-2 bg-orange-500 rotate-45" />
-            <div className="h-px w-20 bg-gradient-to-r from-orange-500 to-transparent" />
-          </motion.div>
+            Explore our exclusive residential and commercial developments. From Malam Jabba to Islamabad, we create spaces that combine luxury living with smart investment potential.
+          </motion.p>
         </motion.div>
       </div>
-
-      {/* CSS Animation */}
-      <style jsx>{`
-        @keyframes gridPulse {
-          0%, 100% { opacity: 0.1; }
-          50% { opacity: 0.2; }
-        }
-      `}</style>
     </section>
   );
 };

@@ -99,14 +99,10 @@ export default function TeamShowcase() {
                   className="space-y-6 text-gray-600 dark:text-gray-300"
                 >
                   <p className="text-lg leading-relaxed font-light">
-                    With over 25 years of pioneering experience in the industry,{" "}
-                    {ceo.name.split(" ")[0]} provides strategic leadership and
-                    technical oversight for all major projects at Pyramids.
+                    Imran Siddique completed his Master’s in Civil Engineering and began his professional career with the German Red Cross. In 2006, he established Pyramids Consulting Engineers & Architects, laying the foundation for a consultancy built on innovation, quality, and professional excellence.
                   </p>
                   <p className="text-lg leading-relaxed font-light">
-                    Their visionary approach and commitment to excellence have
-                    established Pyramids as a trusted leader in delivering
-                    innovative solutions and driving technological advancement.
+                    With more than 25 years of experience in the fields of engineering, architecture, and construction, Imran Siddique has successfully delivered numerous remarkable projects. Today, he is also actively working as a real estate builder, leading premium developments such as LaVita Malam Jabba and Landmark Peshawar, projects that reflect modern design, luxury, and visionary development.
                   </p>
                 </motion.div>
 

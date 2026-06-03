@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Play, Pause } from "lucide-react";
 import { useEffect, useRef, useState, useMemo, useCallback } from "react";
-
+import Link from "next/link";
 // Swiper imports
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Pagination, Navigation } from "swiper/modules";
@@ -109,8 +109,7 @@ export default function HeroPreview() {
     } else {
       videoRefs.current.forEach((v) => {
         if (v) {
-          v.play().catch((e) => {
-            console.log("Video play failed:", e);
+          v.play().catch(() => {
             swiperRef.current?.autoplay?.start();
           });
         }
@@ -259,19 +258,21 @@ export default function HeroPreview() {
               transition={{ duration: 0.5, delay: 0.6 }}
               className="w-full flex justify-center"
             >
-              <motion.button
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -3,
-                  boxShadow: "0 15px 30px rgba(249, 115, 22, 0.4)"
-                }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                className="px-8 py-4 bg-orange-500 text-black font-bold text-lg rounded-none uppercase tracking-wider transition-colors duration-300 hover:bg-white flex items-center justify-center gap-2 font-inter border-2 border-orange-500 hover:border-white"
-              >
-                Get In Touch
-                <ArrowRight size={18} />
-              </motion.button>
+              <Link href="/contact">
+                <motion.button
+                  whileHover={{ 
+                    scale: 1.05, 
+                    y: -3,
+                    boxShadow: "0 15px 30px rgba(249, 115, 22, 0.4)"
+                  }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                  className="px-8 py-4 bg-orange-500 text-black font-bold text-lg rounded-none uppercase tracking-wider transition-colors duration-300 hover:bg-white flex items-center justify-center gap-2 font-inter border-2 border-orange-500 hover:border-white"
+                >
+                  Get In Touch
+                  <ArrowRight size={18} />
+                </motion.button>
+              </Link>
             </motion.div>
           </motion.div>
         )}

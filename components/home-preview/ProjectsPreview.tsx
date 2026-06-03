@@ -26,15 +26,33 @@ export default function ProjectsPreview() {
       aspect: "850/545",
     },
     {
-      name: "Diamond Mall",
-      location: "Peshawar",
+      name: "Capital Grand Heights",
+      location: "Islamabad",
       image: "/DiamondMall-2.PNG",
       aspect: "850/545",
     },
     {
-      name: "Capital Grand Heights",
-      location: "Islamabad",
+      name: "Diamond mall",
+      location: "Peshawar",
       image: "/CapitalHeights.PNG",
+      aspect: "850/545",
+    },
+     {
+      name: "Burj Rabbani",
+      location: "Peshawar",
+      image: "/expertise-images/burj-rabbani.jpg",
+      aspect: "850/545",
+    },
+     {
+      name: "LaVita",
+      location:"Malamjabba",
+      image: "/expertise-images/lavita.png",
+      aspect: "850/545",
+    },
+     {
+      name: "Rabbani Medical Complex",
+      location: "Peshawar",
+      image: "/expertise-images/rabbani-medical.png",
       aspect: "850/545",
     },
   ];

@@ -144,7 +144,7 @@ export default function Footer() {
                 >
                   <a
                     href={social.href}
-                    target="_social.href.startsWith('mailto:') ? '_self' : '_blank'"
+                    target={social.href.startsWith('mailto:') ? '_self' : '_blank'}
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-neutral-900 border border-neutral-800 rounded-none flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition-all duration-300 group"
                     aria-label={social.label}

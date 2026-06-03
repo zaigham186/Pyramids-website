@@ -7,12 +7,15 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { allTeamMembers, type TeamMember } from "@/data/teamData";
 
-// Get the CEO and the rest of the team
+// Get the CEO, Director, and the rest of the team
 const ceo: TeamMember | undefined = allTeamMembers.find(
   (member) => member.id === 1
 );
+const director: TeamMember | undefined = allTeamMembers.find(
+  (member) => member.id === 2
+);
 const coreTeam: TeamMember[] = allTeamMembers.filter(
-  (member) => member.id !== 1
+  (member) => member.id !== 1 && member.id !== 2
 );
 
 export default function TeamShowcase() {
@@ -124,6 +127,118 @@ export default function TeamShowcase() {
                   <div className="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
                     <div className="w-3 h-3 bg-orange-500 rounded-full flex-shrink-0"></div>
                     <span className="font-medium">Technical Excellence</span>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* === DIRECTOR SECTION === */}
+        {director && (
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative bg-gradient-to-br from-gray-50 to-white dark:from-neutral-900 dark:to-neutral-800 rounded-3xl shadow-2xl p-8 md:p-16 mb-24 border border-gray-100 dark:border-neutral-700 overflow-hidden"
+          >
+            {/* Background decorative elements */}
+            <div className="absolute top-0 left-0 w-64 h-64 bg-orange-500/5 rounded-full -translate-y-32 -translate-x-32"></div>
+            <div className="absolute bottom-0 right-0 w-48 h-48 bg-blue-500/5 rounded-full translate-y-24 translate-x-24"></div>
+
+            <div className="relative flex flex-col lg:flex-row-reverse items-center gap-12">
+              {/* Director Image */}
+              {director.image && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="lg:w-2/5 w-full relative"
+                >
+                  <div className="relative h-80 md:h-[480px] rounded-2xl overflow-hidden shadow-2xl">
+                    <Image
+                      src={director.image}
+                      alt={director.name}
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 1024px) 100vw, 40vw"
+                      priority
+                    />
+                    {/* Professional gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                  </div>
+                  {/* Accent element */}
+                  <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-orange-500 rounded-full opacity-20"></div>
+                </motion.div>
+              )}
+
+              {/* Director Info */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="lg:w-3/5 w-full text-center lg:text-left"
+              >
+                <motion.span
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                  className="text-orange-500 uppercase tracking-widest font-semibold text-sm mb-6 inline-block border border-orange-500/20 px-4 py-2 rounded-full bg-orange-500/5"
+                >
+                  Executive Leadership
+                </motion.span>
+
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
+                  className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
+                >
+                  {director.name}
+                </motion.h2>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                  className="text-2xl text-orange-500 font-semibold mb-8"
+                >
+                  {director.position}
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.9 }}
+                  className="space-y-6 text-gray-600 dark:text-gray-300"
+                >
+                  <p className="text-lg leading-relaxed font-light">
+                    As Director of Pyramids Consulting Engineers & Architects, Nooh Siddique brings strategic vision and operational leadership to the firm. His expertise in project management and business development has been instrumental in expanding the company's portfolio and strengthening client relationships.
+                  </p>
+                  <p className="text-lg leading-relaxed font-light">
+                    With a focus on innovation and quality excellence, Nooh oversees the execution of complex engineering and architectural projects, ensuring that each development meets the highest standards of design and construction. His commitment to professional growth and team development continues to drive Pyramids forward.
+                  </p>
+                </motion.div>
+
+                {/* Professional credentials */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1 }}
+                  className="flex flex-wrap gap-6 mt-8 pt-8 border-t border-gray-200 dark:border-neutral-600 justify-center lg:justify-start"
+                >
+                  <div className="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
+                    <div className="w-3 h-3 bg-orange-500 rounded-full flex-shrink-0"></div>
+                    <span className="font-medium">Project Leadership</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
+                    <div className="w-3 h-3 bg-orange-500 rounded-full flex-shrink-0"></div>
+                    <span className="font-medium">Business Development</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
+                    <div className="w-3 h-3 bg-orange-500 rounded-full flex-shrink-0"></div>
+                    <span className="font-medium">Strategic Vision</span>
                   </div>
                 </motion.div>
               </motion.div>

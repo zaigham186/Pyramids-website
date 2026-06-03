@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { Project } from "@/data/projectData";
 
@@ -9,15 +8,8 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
-    <>
-      {/* Project Card - FIXED VERSION */}
-      <div
-        className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer h-72"
-        onClick={() => setIsModalOpen(true)}
-      >
+    <div className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer h-72">
         {/* Image and Hover Effect */}
         <div className="w-full h-full relative overflow-hidden">
           <Image
@@ -51,9 +43,5 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </div>
       </div>
-
-      {/* TODO: We'll fix the modal next */}
-      {isModalOpen && <div>Modal coming soon...</div>}
-    </>
   );
 }

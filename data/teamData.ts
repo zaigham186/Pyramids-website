@@ -20,7 +20,8 @@ export const allTeamMembers: TeamMember[] = [
   {
     id: 2,
     name: "Nooh Siddique",
-    position: "Manager Admin",
+    position: "Director",
+    image:"/expertise-images/nooh .jpg",
   },
   {
     id: 3,
